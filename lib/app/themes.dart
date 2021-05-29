@@ -1,13 +1,14 @@
+/// Keeps in itself theme information.
 library app_themes;
 
-///Keeps in itself theme information.
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 Color appColor = Color(0xFF40BBC2);
 Color? backgroundColor = Colors.grey[100];
+double buttonRadius = 30.0;
 
-///Theme for elevated buttons
+/// Theme for elevated buttons
 final elevatedButtonTheme = ElevatedButtonThemeData(
   style: ButtonStyle(
     backgroundColor: MaterialStateProperty.resolveWith(
@@ -17,12 +18,16 @@ final elevatedButtonTheme = ElevatedButtonThemeData(
       (_) => TextStyle(color: Colors.white),
     ),
     shape: MaterialStateProperty.resolveWith(
-      (_) => RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+      (_) {
+        return RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(buttonRadius),
+        );
+      },
     ),
   ),
 );
 
-///Info about white application theme.
+/// Info about white application theme.
 ThemeData light = ThemeData.light().copyWith(
   colorScheme: ColorScheme.light().copyWith(
     primary: appColor,

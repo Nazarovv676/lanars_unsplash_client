@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../clients/api_client.dart';
+import '../bloc/photos_bloc.dart';
+import '../repos/api_repo.dart';
 import '../pages/home_page.dart';
 
 import 'themes.dart' as themes;
@@ -9,9 +13,21 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: themes.light,
-      home: HomePage(),
+    return ApiRepo(
+      apiClient: ApiClient(),
+      child: Builder(
+        builder: (innerContext) {
+          return MaterialApp(
+            theme: themes.light,
+            home: BlocProvider(
+              create: (context) => PhotosBloc(
+                apiRepo: ApiRepo.of(innerContext),
+              ),
+              child: HomePage(),
+            ),
+          );
+        },
+      ),
     );
   }
 }
