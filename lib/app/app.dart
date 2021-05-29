@@ -18,6 +18,7 @@ class App extends StatelessWidget {
       child: Builder(
         builder: (innerContext) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: themes.light,
             home: BlocProvider(
               create: (context) => PhotosBloc(
