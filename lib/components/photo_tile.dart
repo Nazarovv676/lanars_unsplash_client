@@ -30,9 +30,8 @@ class PhotoTile extends StatelessWidget {
               tag: heroTag,
               child: ConstrainedBox(
                 constraints: BoxConstraints(minHeight: 400),
-                child: NetworkImageBlurHash(
-                  uri: photo.small,
-                  blurHash: photo.blurHash,
+                child: CachedNetworkImageLoader(
+                  url: photo.small,
                 ),
               ),
             ),

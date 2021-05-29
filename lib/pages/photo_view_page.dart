@@ -20,9 +20,8 @@ class PhotoViewPage extends StatelessWidget {
       body: Center(
         child: Hero(
           tag: heroTag,
-          child: NetworkImageBlurHash(
-            uri: photo.full,
-            blurHash: photo.blurHash,
+          child: CachedNetworkImageLoader(
+            url: photo.full,
             fit: BoxFit.contain,
           ),
         ),

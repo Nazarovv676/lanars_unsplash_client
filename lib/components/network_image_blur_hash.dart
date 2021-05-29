@@ -1,49 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 ///Shows network image. When loading in progress shows blur hash image
-class NetworkImageBlurHash extends StatelessWidget {
+class CachedNetworkImageLoader extends StatelessWidget {
   ///How to inscribe the image into the space allocated during layout
   final BoxFit fit;
 
-  ///Blur hash string
-  final String blurHash;
-
   ///Image source
-  final String uri;
+  final String url;
 
-  const NetworkImageBlurHash({
+  const CachedNetworkImageLoader({
     Key? key,
-    required this.uri,
-    required this.blurHash,
+    required this.url,
     this.fit = BoxFit.cover,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      uri,
+    return CachedNetworkImage(
+      imageUrl: url,
       fit: fit,
-      loadingBuilder: (BuildContext context, Widget child,
-          ImageChunkEvent? loadingProgress) {
-        if (loadingProgress == null) return child;
-        return SizedBox(
-          height: 400,
-          child: Stack(
-            children: [
-              BlurHash(hash: blurHash),
-              Center(
-                child: CircularProgressIndicator(
-                  value: loadingProgress.expectedTotalBytes != null
-                      ? loadingProgress.cumulativeBytesLoaded /
-                          loadingProgress.expectedTotalBytes!
-                      : null,
-                ),
-              ),
-            ],
-          ),
-        );
-      },
+      progressIndicatorBuilder: (context, url, downloadProgress) => Center(
+        child: CircularProgressIndicator(
+          value: downloadProgress.progress,
+        ),
+      ),
     );
   }
 }
