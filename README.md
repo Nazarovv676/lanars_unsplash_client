@@ -1,16 +1,13 @@
 # lanars_unsplash_client
 
-A new Flutter project.
+A test project for Lanars company
 
-## Getting Started
+Tested on Linux and Android
 
-This project is a starting point for a Flutter application.
+The bloc architecture was used (flutter_bloc).
 
-A few resources to get you started if this is your first Flutter project:
+## DEMO
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/40543856/120073768-6a902a80-c0a2-11eb-97a8-ce6b51ec235f.gif)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Original video: https://drive.google.com/file/d/1iHrHjicV3MBL9PunsYnecwqpXmI2nSFn/view?usp=sharing
