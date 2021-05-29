@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../clients/api_client.dart';
-import '../bloc/photos_bloc.dart';
+import '../bloc/photos/photos_bloc.dart';
 import '../repos/api_repo.dart';
 import '../pages/home_page.dart';
 

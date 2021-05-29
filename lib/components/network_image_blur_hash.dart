@@ -17,8 +17,7 @@ class NetworkImageBlurHash extends StatelessWidget {
     required this.uri,
     required this.blurHash,
     this.fit = BoxFit.cover,
-  })  : assert(blurHash != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

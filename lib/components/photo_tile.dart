@@ -6,10 +6,12 @@ import 'network_image_blur_hash.dart';
 ///Tile in list of home page
 class PhotoTile extends StatelessWidget {
   final Photo photo;
+  final String heroTag;
 
   final Function()? onTap;
 
-  const PhotoTile({Key? key, required this.photo, this.onTap})
+  const PhotoTile(
+      {Key? key, required this.photo, this.onTap, required this.heroTag})
       : super(key: key);
 
   @override
@@ -24,11 +26,14 @@ class PhotoTile extends StatelessWidget {
         ),
         child: Column(
           children: [
-            ConstrainedBox(
-              constraints: BoxConstraints(minHeight: 400),
-              child: NetworkImageBlurHash(
-                uri: photo.small,
-                blurHash: photo.blurHash,
+            Hero(
+              tag: heroTag,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: 400),
+                child: NetworkImageBlurHash(
+                  uri: photo.small,
+                  blurHash: photo.blurHash,
+                ),
               ),
             ),
             Padding(
