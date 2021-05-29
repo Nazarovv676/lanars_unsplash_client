@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/photo_model.dart';
-import 'network_image_blur_hash.dart';
+import 'cached_network_image_loader.dart';
 
 ///Tile in list of home page
 class PhotoTile extends StatelessWidget {

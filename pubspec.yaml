@@ -28,6 +28,7 @@ dependencies:
   dio: ^4.0.0
   equatable: ^2.0.2
   flutter_bloc: ^7.0.0
+  dismissible_page: ^0.6.3
 
 dev_dependencies:
   flutter_test:

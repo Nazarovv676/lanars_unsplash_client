@@ -47,8 +47,9 @@ class HomePage extends StatelessWidget {
 
   void _onPhotoTap(BuildContext context, Photo photo) {
     Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => PhotoViewPage(
+      PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (_, __, ___) => PhotoViewPage(
           photo: photo,
           heroTag: photo.full,
         ),
