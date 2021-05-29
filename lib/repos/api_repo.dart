@@ -33,6 +33,22 @@ class ApiRepo extends InheritedWidget {
     return photo;
   }
 
+  Future<List<Photo>> searchPhotos(String query, [int page = 1]) async {
+    final List response = await apiClient.searchPhotos(query, page) ?? [];
+    final photo = response
+        .map((e) => Photo(
+              id: e['id'],
+              small: e['urls']['small'],
+              regular: e['urls']['regular'],
+              full: e['urls']['full'],
+              userName: e['user']['name'],
+              likes: e['likes'],
+              blurHash: e['blur_hash'],
+            ))
+        .toList();
+    return photo;
+  }
+
   static ApiRepo of(BuildContext context) {
     final ApiRepo? result =
         context.dependOnInheritedWidgetOfExactType<ApiRepo>();

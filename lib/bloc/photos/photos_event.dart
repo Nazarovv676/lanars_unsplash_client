@@ -15,3 +15,13 @@ class PhotosRequested extends PhotosEvent {
   @override
   List<Object> get props => [page];
 }
+
+class PhotosSearch extends PhotosEvent {
+  final String query;
+  final int page;
+
+  PhotosSearch({this.page = 1, required this.query});
+
+  @override
+  List<Object> get props => [page, query];
+}

@@ -37,4 +37,20 @@ class ApiClient {
       _validateCodes(response.statusCode);
     }
   }
+
+  Future<List<dynamic>?> searchPhotos(String query, [int page = 1]) async {
+    Map<String, dynamic> params = Map.from(authQueryParams)
+      ..update('page', (value) => page, ifAbsent: () => page)
+      ..update('query', (value) => query, ifAbsent: () => query);
+    final response = await dio.get(
+      '$apiAddress/search/photos',
+      queryParameters: params,
+    );
+
+    if (response.statusCode == 200) {
+      return ((response.data as Map)['results'] as List);
+    } else {
+      _validateCodes(response.statusCode);
+    }
+  }
 }

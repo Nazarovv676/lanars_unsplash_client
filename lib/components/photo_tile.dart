@@ -9,44 +9,60 @@ class PhotoTile extends StatelessWidget {
   final String heroTag;
 
   final Function()? onTap;
+  final double radius;
+  final Duration animationDuration;
 
-  const PhotoTile(
-      {Key? key, required this.photo, this.onTap, required this.heroTag})
-      : super(key: key);
+  const PhotoTile({
+    Key? key,
+    required this.photo,
+    this.onTap,
+    required this.heroTag,
+    this.radius = 8.0,
+    this.animationDuration = const Duration(milliseconds: 100),
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(8.0),
+      child: AnimatedContainer(
+        duration: animationDuration,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(4)),
+          color: Theme.of(context).backgroundColor,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 4,
+              color: Colors.black45,
+            )
+          ],
+          borderRadius: BorderRadius.circular(radius),
         ),
-        child: Column(
-          children: [
-            Hero(
-              tag: heroTag,
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: 400),
-                child: CachedNetworkImageLoader(
-                  url: photo.small,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(radius),
+          child: Column(
+            children: [
+              Hero(
+                tag: heroTag,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: 400),
+                  child: CachedNetworkImageLoader(
+                    url: photo.small,
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text('Created by: ${photo.userName}'),
-                  Spacer(),
-                  Icon(Icons.star),
-                  Text(photo.likes != null ? photo.likes.toString() : '0'),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text('Created by: ${photo.userName}'),
+                    Spacer(),
+                    Icon(Icons.star),
+                    Text(photo.likes != null ? photo.likes.toString() : '0'),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

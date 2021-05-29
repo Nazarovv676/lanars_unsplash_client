@@ -10,19 +10,44 @@ import '../components/photo_tile.dart';
 
 class HomePage extends StatelessWidget {
   final rand = Random();
+  final _searchTextController = TextEditingController();
   HomePage({Key? key}) : super(key: key);
 
   Future<void> _onRefresh(BuildContext context) async {
     BlocProvider.of<PhotosBloc>(context).add(PhotosRequested(
       page: rand.nextInt(100),
     ));
+    _searchTextController.clear();
+    FocusScope.of(context).unfocus();
+  }
+
+  _onSearch(BuildContext context) {
+    if (_searchTextController.text.isNotEmpty) {
+      BlocProvider.of<PhotosBloc>(context).add(PhotosSearch(
+        query: _searchTextController.text,
+      ));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Unsplash gallery'),
+        backgroundColor: Colors.white,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextFormField(
+            controller: _searchTextController,
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                labelText: 'Search',
+                hintText: 'Some text',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () => _onSearch(context),
+                )),
+          ),
+        ),
       ),
       body: Center(
         child: BlocBuilder<PhotosBloc, PhotosState>(

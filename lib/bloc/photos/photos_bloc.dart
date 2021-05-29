@@ -29,5 +29,18 @@ class PhotosBloc extends Bloc<PhotosEvent, PhotosState> {
         yield PhotosFailure(message: e.toString());
       }
     }
+    if (event is PhotosSearch) {
+      yield PhotosInProgress();
+      try {
+        final photos = await apiRepo.searchPhotos(event.query, event.page);
+        yield PhotosSuccess(photos: photos);
+      } on ApiException catch (e) {
+        print(e);
+        yield PhotosFailure(message: e.message);
+      } catch (e) {
+        print(e);
+        yield PhotosFailure(message: e.toString());
+      }
+    }
   }
 }
