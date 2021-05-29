@@ -14,6 +14,6 @@ Original video: https://drive.google.com/file/d/1iHrHjicV3MBL9PunsYnecwqpXmI2nSF
 
 ## BUILDS
 
-Android: https://drive.google.com/file/d/1p3vDy68YMtj4T0l8CB5yEa6_3BLCya4D/view?usp=sharing
+Android: https://drive.google.com/file/d/1p3vDy68YMtj4T0l8CB5yEa6_3BLCya4D/view?usp=sharing (install apk)
 
-Linux: https://drive.google.com/drive/folders/1Xbc_3oXPdDCRng5gB6lMGf1WWV0Bi2kO?usp=sharing
+Linux: https://drive.google.com/drive/folders/1Xbc_3oXPdDCRng5gB6lMGf1WWV0Bi2kO?usp=sharing (execute file in root)
